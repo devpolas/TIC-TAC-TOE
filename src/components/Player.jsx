@@ -1,10 +1,13 @@
 import { useState } from "react";
 
-function Player({ name, symbol, isActive }) {
+function Player({ name, symbol, isActive, managePlayersName }) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(name);
   function handelClick() {
     setIsEditing(() => !isEditing);
+    if (isEditing) {
+      managePlayersName(symbol, playerName);
+    }
   }
   return (
     <li className={isActive ? "active" : undefined}>
